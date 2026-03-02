@@ -4,33 +4,40 @@
   --color-brand-blue: #008DCE;
   --color-brand-blue-hover: #007AB3;
   --color-brand-black: #111111;
-  --color-brand-gray: #1E1E1E;
-  --color-brand-gray-light: #2A2A2A;
-  
+  --color-brand-gray: #E5E5E5;
+  --color-brand-gray-light: #F5F5F5;
+  --color-border: #E8E8E8;
+  --color-add-btn: #E8474C;
+  --color-add-btn-hover: #D63C41;
   --font-sans: var(--font-inter), sans-serif;
 }
 
 @layer base {
   body {
-    background-color: var(--color-brand-black);
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #111111;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Custom scrollbar for better look */
+/* Custom scrollbar - light theme */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #F5F5F5;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brand-gray-light);
+  background: #CCCCCC;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-blue);
+  background: #999999;
+}
+
+/* Dotted separator for list items (Zomato style) */
+.separator-dotted {
+  border-bottom: 1px dotted #E0E0E0;
 }

@@ -89,12 +89,6 @@ export const useCartStore = create<CartState>((set, get) => ({
 
     getCartTotal: () => {
         const subtotal = get().getSubTotal();
-        const deliveryFee = subtotal >= 300 ? 0 : 30; // Assuming 30 delivery fee, will manage explicitly in UI as well. Let's return just subtotal to be clear and add fee in UI. Wait, we'll just handle fee where displayed, let's keep getCartTotal simple.
-        // Actually let's return it exactly reflecting business logic.
-        // Min order 100.
-        if (subtotal === 0) return 0;
-        const isFreeDelivery = subtotal >= 300;
-        const finalDeliveryFee = isFreeDelivery ? 0 : 40; // Hardcoding delivery fee to 40 for now if below 300
-        return subtotal + finalDeliveryFee;
+        return subtotal;
     },
 }));

@@ -15,50 +15,53 @@ export default function CartItem({ item }: { item: CartItemType }) {
     }
   };
 
-  const handleIncrease = () => {
-    updateQuantity(item.cartItemId, 1);
-  };
+  const handleIncrease = () => updateQuantity(item.cartItemId, 1);
 
   const variantText = item.selectedSize ? `(${item.selectedSize.label})` : "";
   const unitPrice = item.selectedSize ? item.selectedSize.price : item.price;
 
   return (
-    <div className="flex items-center justify-between border-b border-[var(--color-brand-gray-light)] py-4 last:border-0">
+    <div className="flex items-center justify-between border-b border-[var(--color-border)] py-4 last:border-0">
       <div className="flex-1 pr-4">
-        <h4 className="font-semibold text-white">
-          {item.name} {variantText && <span className="text-gray-400 font-normal text-sm">{variantText}</span>}
+        <h4 className="font-semibold text-neutral-900">
+          {item.name}{" "}
+          {variantText && (
+            <span className="text-sm font-normal text-neutral-500">
+              {variantText}
+            </span>
+          )}
         </h4>
-        <div className="mt-1 text-sm font-medium text-brand-blue">
+        <div className="mt-0.5 text-sm font-medium text-neutral-600">
           ₹{unitPrice}
         </div>
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="flex items-center rounded-lg border border-[var(--color-brand-gray-light)] bg-[var(--color-brand-gray)]">
+        <div className="flex items-center rounded-lg border border-neutral-200 bg-neutral-50">
           <button
             onClick={handleDecrease}
-            className="flex h-8 w-8 items-center justify-center rounded-l-lg text-gray-300 transition-colors hover:bg-white/5 hover:text-white"
+            className="flex h-8 w-8 items-center justify-center rounded-l-lg text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
             aria-label="Decrease quantity"
           >
             {item.quantity === 1 ? (
-              <Trash2 className="h-4 w-4 text-red-400" />
+              <Trash2 className="h-4 w-4 text-red-500" />
             ) : (
               <Minus className="h-4 w-4" />
             )}
           </button>
-          <span className="flex h-8 w-8 items-center justify-center text-sm font-medium text-white">
+          <span className="flex h-8 w-12 items-center justify-center text-sm font-medium text-neutral-900">
             {item.quantity}
           </span>
           <button
             onClick={handleIncrease}
-            className="flex h-8 w-8 items-center justify-center rounded-r-lg text-gray-300 transition-colors hover:bg-white/5 hover:text-white"
+            className="flex h-8 w-8 items-center justify-center rounded-r-lg text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
             aria-label="Increase quantity"
           >
             <Plus className="h-4 w-4" />
           </button>
         </div>
-        
-        <div className="w-16 text-right font-bold text-white">
+
+        <div className="w-14 text-right text-sm font-bold text-neutral-900">
           ₹{item.itemTotal}
         </div>
       </div>

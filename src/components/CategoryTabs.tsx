@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { menu } from "@/data/menu";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -9,19 +8,23 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export default function CategoryTabs({ 
-  activeCategory, 
-  setActiveCategory 
-}: { 
-  activeCategory: string, 
-  setActiveCategory: (cat: string) => void 
+export default function CategoryTabs({
+  activeCategory,
+  setActiveCategory,
+}: {
+  activeCategory: string;
+  setActiveCategory: (cat: string) => void;
 }) {
-  const categories = menu.map((m) => m.category);
+  const categories = [
+    "All",
+    "Cakes",
+    ...menu.map((m) => m.category).filter((c) => c !== "Cakes"),
+  ];
 
   return (
-    <div className="sticky top-16 z-30 w-full bg-[var(--color-brand-black)]/95 backdrop-blur shadow-sm border-b border-[var(--color-brand-gray-light)]">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <ul className="flex flex-nowrap gap-2 overflow-x-auto py-3 no-scrollbar scroll-smooth">
+    <div className="sticky top-14 z-30 w-full border-b border-[var(--color-border)] bg-white">
+      <div className="mx-auto max-w-2xl px-4 sm:px-5">
+        <ul className="flex flex-nowrap gap-2 overflow-x-auto py-3 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {categories.map((category) => {
             const isActive = activeCategory === category;
             return (
@@ -29,10 +32,10 @@ export default function CategoryTabs({
                 <button
                   onClick={() => setActiveCategory(category)}
                   className={cn(
-                    "rounded-full px-5 py-2 text-sm font-medium transition-all duration-200",
+                    "rounded-full px-4 py-2 text-sm font-medium transition-colors",
                     isActive
-                      ? "bg-brand-blue text-white"
-                      : "bg-[var(--color-brand-gray-light)] text-gray-300 hover:bg-[var(--color-brand-gray)]"
+                      ? "bg-neutral-900 text-white"
+                      : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
                   )}
                 >
                   {category}

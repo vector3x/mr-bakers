@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} font-sans antialiased text-white bg-[var(--color-brand-black)]`}
+        className={`${inter.variable} font-sans antialiased bg-white text-neutral-900`}
       >
         <div className="relative flex min-h-screen flex-col">
           {children}

@@ -9,6 +9,8 @@ export interface MenuItem {
   subCategory?: string;
   price?: number;
   sizes?: SizeOption[];
+  description?: string;
+  image?: string; // path under /assets/ e.g. "veg noodles.jpg"
 }
 
 export interface MenuCategory {
