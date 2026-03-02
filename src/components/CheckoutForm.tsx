@@ -18,7 +18,9 @@ type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 export default function CheckoutForm({
   onComplete,
-}: { onComplete?: () => void }) {
+}: {
+  onComplete?: () => void;
+}) {
   const { items, getSubTotal, getCartTotal, clearCart } = useCartStore();
   const [toastMessage, setToastMessage] = useState<{
     type: "error" | "success";
@@ -56,7 +58,7 @@ export default function CheckoutForm({
         const variantText = item.selectedSize
           ? ` (${item.selectedSize.label})`
           : "";
-        return `▪ ${item.quantity}x ${item.name}${variantText} - ₹${item.itemTotal}`;
+        return `▪ ${item.quantity}x ${item.name}${variantText}`;
       })
       .join("\n");
 
@@ -65,13 +67,12 @@ export default function CheckoutForm({
 
 👤 Name: ${data.name}
 📞 Phone: ${data.phone}
-📍 Address: ${data.address}
-
-📦 *Items:*
-${itemsList}
-💰 *Total: ₹${total}*
-💵 Payment: Cash on Delivery
-`;
+      📍 Address: ${data.address}
+      
+      📦 *Items:*
+      ${itemsList}
+      💵 Payment: Cash on Delivery
+      `;
 
     const encodedMessage = encodeURIComponent(message.trim());
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
