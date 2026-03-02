@@ -126,6 +126,7 @@ export default function MenuPage() {
 
         {renderItems()}
       </div>
+      //
 
       <AnimatePresence>
         {cartItemCount > 0 && !isDrawerOpen && (
