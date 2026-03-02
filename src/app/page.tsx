@@ -12,7 +12,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
-        className="flex min-h-screen flex-1 flex-col"
+        className="flex flex-1 flex-col"
       >
         <header className="border-b border-neutral-200 bg-white pt-2">
           <div className="mx-auto flex h-16 max-w-2xl items-center justify-center px-4 sm:px-5">

@@ -56,24 +56,13 @@ export default function MenuPage() {
 
     if (!hasSubCategories) {
       return (
-        <motion.div
-          className="flex flex-col gap-3 rounded-none border-0 bg-white px-0"
-          layout
-        >
-          <AnimatePresence mode="popLayout">
-            {itemsToShow.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2, delay: index * 0.02 }}
-              >
-                <ProductCard item={item} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <div className="flex flex-col gap-3 rounded-none border-0 bg-white px-0">
+          {itemsToShow.map((item) => (
+            <div key={item.id}>
+              <ProductCard item={item} />
+            </div>
+          ))}
+        </div>
       );
     }
 
@@ -93,24 +82,13 @@ export default function MenuPage() {
           <h3 className="mb-3 text-base font-bold text-neutral-900 sm:text-lg">
             {subCat}
           </h3>
-          <motion.div className="flex flex-col gap-3 bg-white" layout>
-            <AnimatePresence mode="popLayout">
-              {subCatItems.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    duration: 0.2,
-                    delay: groupIndex * 0.03 + index * 0.02,
-                  }}
-                >
-                  <ProductCard item={item} />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <div className="flex flex-col gap-3 bg-white">
+            {subCatItems.map((item) => (
+              <div key={item.id}>
+                <ProductCard item={item} />
+              </div>
+            ))}
+          </div>
         </div>
       ),
     );
