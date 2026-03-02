@@ -14,7 +14,7 @@ export default function Home() {
         transition={{ duration: 0.25, ease: "easeOut" }}
         className="flex min-h-screen flex-1 flex-col"
       >
-        <header className="border-b border-neutral-200 bg-white">
+        <header className="border-b border-neutral-200 bg-white pt-2">
           <div className="mx-auto flex h-16 max-w-2xl items-center justify-center px-4 sm:px-5">
             <div className="flex items-center gap-3">
               <Image
@@ -24,7 +24,7 @@ export default function Home() {
                 height={48}
                 className="h-12 w-12 object-cover"
               />
-              <span className="text-xl font-bold tracking-tight">
+              <span className="text-xl font-bold tracking-tight pb-1">
                 Mr <span className="text-red-600">Bakers</span>
               </span>
             </div>
