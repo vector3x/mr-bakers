@@ -59,7 +59,7 @@ export default function CheckoutForm({
           ? ` (${item.selectedSize.label})`
           : "";
         return `▪ ${item.quantity}x ${item.name}${variantText}`;
-      })
+        })
       .join("\n");
 
     const message = `
@@ -81,10 +81,10 @@ export default function CheckoutForm({
     showToast("success", "Redirecting to WhatsApp...");
 
     setTimeout(() => {
-      clearCart();
-      if (onComplete) onComplete();
+          clearCart();
+          if (onComplete) onComplete();
     }, 2000);
-  };
+    };
 
   return (
     <>
@@ -155,27 +155,21 @@ export default function CheckoutForm({
         </div>
 
         <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm">
-          <p className="mb-1 flex justify-between text-neutral-600">
+          <div className="flex justify-between text-neutral-600">
             <span>Subtotal</span>
             <span>₹{subtotal}</span>
-          </p>
-          <p className="mb-2 flex justify-between text-neutral-600">
-            <span>Delivery</span>
-            <span>
-              {deliveryFee === 0 ? (
-                <span className="font-medium text-green-600">
-                  Free Delivery Applied
-                </span>
-              ) : (
-                `₹${deliveryFee}`
-              )}
-            </span>
-          </p>
-          <div className="mt-2 border-t border-neutral-200 pt-2" />
-          <p className="mt-1 flex justify-between text-base font-bold text-neutral-900">
+          </div>
+          <div className="mt-3 rounded-lg border border-neutral-200 bg-white px-3 py-2.5">
+            <p className="font-medium text-neutral-700">Delivery</p>
+            <p className="mt-1 text-xs leading-relaxed text-neutral-600">
+              ₹10/km after first 3 km free. We’ll confirm the exact delivery charge before delivery.
+            </p>
+          </div>
+          <div className="mt-3 border-t border-neutral-200 pt-3" />
+          <div className="flex justify-between text-base font-bold text-neutral-900">
             <span>Total To Pay</span>
-            <span>₹{total}</span>
-          </p>
+            <span>₹{total} + delivery</span>
+          </div>
         </div>
 
         {subtotal < 200 && items.length > 0 && (
